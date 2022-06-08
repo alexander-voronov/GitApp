@@ -2,7 +2,7 @@ package alexander.voronov.gitapp
 
 data class UserEntity(
     val login: String,
-    val id: Int,
+    val id: Long,
     //avatar_url
     val avatarUrl: String,
     )
