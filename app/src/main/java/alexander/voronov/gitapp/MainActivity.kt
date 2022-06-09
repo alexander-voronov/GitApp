@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val adapter: UsersAdapter
+    private val adapter = UsersAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
