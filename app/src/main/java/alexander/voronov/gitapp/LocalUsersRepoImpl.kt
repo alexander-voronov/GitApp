@@ -3,7 +3,7 @@ package alexander.voronov.gitapp
 import android.os.Handler
 import android.os.Looper
 
-private const val DATA_LOADING_FICTIONAL_DELAY = 1_000L
+private const val DATA_LOADING_FICTIONAL_DELAY = 3_000L
 
 class LocalUsersRepoImpl : UsersRepo {
     private val data: List<UserEntity> = listOf(
