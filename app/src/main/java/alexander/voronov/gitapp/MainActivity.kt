@@ -10,6 +10,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val adapter = UsersAdapter()
+    private val usersRepo: UsersRepo = LocalUsersRepoImpl()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,5 +27,12 @@ class MainActivity : AppCompatActivity() {
     private fun initRecyclerView() {
         binding.usersRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.usersRecyclerView.adapter = adapter
+        //асинхронный подход с callback. Активити знает только о UsersRepo, но не знает, что под капотом
+        usersRepo.getUsers(
+            onSuccess = adapter::setData, //:: - ссылка на метод
+            onError = {
+                Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+            }
+        )
     }
 }
