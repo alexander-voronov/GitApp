@@ -1,8 +1,8 @@
 package alexander.voronov.gitapp.ui.users
 
 import alexander.voronov.gitapp.R
-import alexander.voronov.gitapp.domain.UserEntity
 import alexander.voronov.gitapp.databinding.ItemUserBinding
+import alexander.voronov.gitapp.domain.UserEntity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

@@ -1,6 +1,6 @@
 package alexander.voronov.gitapp.ui.users
 
-import alexander.voronov.gitapp.data.LocalUsersRepoImpl
+import alexander.voronov.gitapp.app
 import alexander.voronov.gitapp.databinding.ActivityMainBinding
 import alexander.voronov.gitapp.domain.UserEntity
 import alexander.voronov.gitapp.domain.UsersRepo
@@ -14,7 +14,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val adapter = UsersAdapter()
-    private val usersRepo: UsersRepo = LocalUsersRepoImpl()
+
+    // MainActivity не знает, что здесь лежит usersRepo, отгорожена от слоя data
+    private val usersRepo: UsersRepo by lazy { app.usersRepo }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
