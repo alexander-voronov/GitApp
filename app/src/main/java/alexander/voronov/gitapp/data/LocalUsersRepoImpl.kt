@@ -1,5 +1,7 @@
-package alexander.voronov.gitapp
+package alexander.voronov.gitapp.data
 
+import alexander.voronov.gitapp.domain.UserEntity
+import alexander.voronov.gitapp.domain.UsersRepo
 import android.os.Handler
 import android.os.Looper
 

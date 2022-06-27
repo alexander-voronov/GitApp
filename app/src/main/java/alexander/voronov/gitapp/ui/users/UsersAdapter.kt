@@ -1,5 +1,6 @@
-package alexander.voronov.gitapp
+package alexander.voronov.gitapp.ui.users
 
+import alexander.voronov.gitapp.domain.UserEntity
 import android.annotation.SuppressLint
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

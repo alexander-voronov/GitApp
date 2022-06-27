@@ -1,6 +1,9 @@
-package alexander.voronov.gitapp
+package alexander.voronov.gitapp.ui.users
 
+import alexander.voronov.gitapp.data.LocalUsersRepoImpl
 import alexander.voronov.gitapp.databinding.ActivityMainBinding
+import alexander.voronov.gitapp.domain.UserEntity
+import alexander.voronov.gitapp.domain.UsersRepo
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
