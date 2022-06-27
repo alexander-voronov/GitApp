@@ -1,7 +1,8 @@
 package alexander.voronov.gitapp
 
 import alexander.voronov.gitapp.data.LocalUsersRepoImpl
-import alexander.voronov.gitapp.domain.UsersRepo
+import alexander.voronov.gitapp.data.RetrofitUsersRepoImpl
+import alexander.voronov.gitapp.domain.repos.UsersRepo
 import android.app.Application
 import android.content.Context
 import androidx.fragment.app.Fragment
@@ -12,7 +13,8 @@ import androidx.fragment.app.Fragment
 class App : Application() {
 
     //скрывает логику создания
-    val usersRepo: UsersRepo by lazy { LocalUsersRepoImpl() }
+    //val usersRepo: UsersRepo by lazy { LocalUsersRepoImpl() }
+    val usersRepo: UsersRepo by lazy { RetrofitUsersRepoImpl() }
 
     override fun onCreate() {
         super.onCreate()

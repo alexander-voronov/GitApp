@@ -1,6 +1,6 @@
-package alexander.voronov.gitapp.domain
+package alexander.voronov.gitapp.domain.repos
 
-import alexander.voronov.gitapp.domain.UserEntity
+import alexander.voronov.gitapp.domain.entities.UserEntity
 
 interface UsersRepo {
     //CRUD в данном случае только Read
