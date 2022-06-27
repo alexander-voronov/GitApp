@@ -17,25 +17,39 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        showProgress(false)
+        initViews()
+    }
 
+    private fun initViews() {
         binding.activityMainRefreshButton.setOnClickListener {
-            showProgress(true)
-            //асинхронный подход с callback. Активити знает только о UsersRepo, но не знает, что под капотом
-            usersRepo.getUsers(
-                //onSuccess = adapter::setData, //:: - ссылка на метод
-                onSuccess = {
-                    showProgress(false)
-                    adapter.setData(it)
-                },
-                onError = {
-                    showProgress(false)
-                    Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
-                }
-            )
+            loadData()
         }
-
         initRecyclerView()
+        showProgress(false)
+    }
+
+    private fun loadData() {
+        showProgress(true)
+        //асинхронный подход с callback. Активити знает только о UsersRepo, но не знает, что под капотом
+        usersRepo.getUsers(
+            //onSuccess = adapter::setData, //:: - ссылка на метод
+            onSuccess = {
+                showProgress(false)
+                onDataLoaded(it)
+            },
+            onError = {
+                showProgress(false)
+                onError(it)
+            }
+        )
+    }
+
+    private fun onDataLoaded(data: List<UserEntity>) {
+        adapter.setData(data)
+    }
+
+    private fun onError(throwable: Throwable) {
+        Toast.makeText(this, throwable.message, Toast.LENGTH_SHORT).show()
     }
 
     private fun initRecyclerView() {
