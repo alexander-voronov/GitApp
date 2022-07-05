@@ -15,7 +15,7 @@ interface UsersContract {
     //View создаёт Presenter. Тут бизнес логика.
     interface Presenter {
         fun attach(view: View)
-        fun detach(view: View)
+        fun detach()
 
         //клик кнопки
         fun onRefresh()
