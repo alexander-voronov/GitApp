@@ -40,20 +40,20 @@ class MainActivity : AppCompatActivity() {
             //onSuccess = adapter::setData, //:: - ссылка на метод
             onSuccess = {
                 showProgress(false)
-                onDataLoaded(it)
+                showUsers(it)
             },
             onError = {
                 showProgress(false)
-                onError(it)
+                showError(it)
             }
         )
     }
 
-    private fun onDataLoaded(data: List<UserEntity>) {
+    private fun showUsers(data: List<UserEntity>) {
         adapter.setData(data)
     }
 
-    private fun onError(throwable: Throwable) {
+    private fun showError(throwable: Throwable) {
         Toast.makeText(this, throwable.message, Toast.LENGTH_SHORT).show()
     }
 
