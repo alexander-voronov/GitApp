@@ -22,13 +22,23 @@ class MainActivity : AppCompatActivity(), UsersContract.View {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initViews()
-        presenter = UsersPresenter(app.usersRepo)
+        presenter = extractPresenter()
         presenter.attach(this)
     }
+
+    /*присваиваем последнее сохранённое состояние, если он типа Presenter иначе
+        создаём новый*/
+    private fun extractPresenter(): UsersContract.Presenter =
+        lastCustomNonConfigurationInstance as? UsersContract.Presenter
+            ?: UsersPresenter(app.usersRepo)
 
     override fun onDestroy() {
         presenter.detach()
         super.onDestroy()
+    }
+
+    override fun onRetainCustomNonConfigurationInstance(): UsersContract.Presenter {
+        return presenter
     }
 
     private fun initViews() {
